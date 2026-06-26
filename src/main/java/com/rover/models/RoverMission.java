@@ -1,4 +1,4 @@
-package com.test.rover.models;
+package com.rover.models;
 
 import java.util.List;
 

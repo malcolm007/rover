@@ -1,8 +1,8 @@
-package com.test.rover.services;
+package com.rover.services;
 
-import com.test.rover.command.CommandRegistry;
-import com.test.rover.models.Rover;
-import com.test.rover.models.RoverInstruction;
+import com.rover.command.CommandRegistry;
+import com.rover.models.Rover;
+import com.rover.models.RoverInstruction;
 
 public class RoverMissionService {
 

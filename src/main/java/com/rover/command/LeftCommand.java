@@ -1,7 +1,7 @@
-package com.test.rover.command;
+package com.rover.command;
 
-import com.test.rover.models.Direction;
-import com.test.rover.models.Rover;
+import com.rover.models.Direction;
+import com.rover.models.Rover;
 
 public class LeftCommand implements Command {
 

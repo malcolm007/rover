@@ -1,6 +1,6 @@
-package com.test.rover.parser;
+package com.rover.parser;
 
-import com.test.rover.models.*;
+import com.rover.models.*;
 
 import java.io.IOException;
 import java.nio.file.Files;

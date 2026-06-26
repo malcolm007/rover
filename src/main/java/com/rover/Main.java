@@ -1,13 +1,15 @@
-package com.test.rover;
+package com.rover;
 
-import com.test.rover.command.CommandRegistry;
-import com.test.rover.models.RoverInstruction;
-import com.test.rover.models.RoverMission;
-import com.test.rover.parser.FileParser;
-import com.test.rover.services.RoverMissionService;
+import com.rover.command.CommandRegistry;
+import com.rover.models.RoverInstruction;
+import com.rover.models.RoverMission;
+import com.rover.parser.FileParser;
+import com.rover.services.RoverMissionService;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;
 
+@Slf4j
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -18,7 +20,7 @@ public class Main {
         RoverMissionService service = new RoverMissionService(registry);
         for (RoverInstruction instruction : mission.roverInstructions()) {
             service.execute(instruction);
-            System.out.println(instruction.rover());
+            log.info("Rover position: {}", instruction.rover());
         }
     }
 }

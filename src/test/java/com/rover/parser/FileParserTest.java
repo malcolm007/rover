@@ -1,6 +1,6 @@
-package com.test.rover.parser;
+package com.rover.parser;
 
-import com.test.rover.models.RoverMission;
+import com.rover.models.RoverMission;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

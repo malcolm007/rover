@@ -1,4 +1,4 @@
-package com.test.rover.models;
+package com.rover.models;
 
 public record RoverInstruction(Rover rover, String instructions) {
 }

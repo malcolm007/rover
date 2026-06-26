@@ -1,4 +1,4 @@
-package com.test.rover.command;
+package com.rover.command;
 
 import org.junit.jupiter.api.Test;
 

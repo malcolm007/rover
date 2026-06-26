@@ -1,3 +1,3 @@
-package com.test.rover.models;
+package com.rover.models;
 
 public record Position(int x, int y) {}

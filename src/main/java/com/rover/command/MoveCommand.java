@@ -1,7 +1,7 @@
-package com.test.rover.command;
+package com.rover.command;
 
-import com.test.rover.models.Position;
-import com.test.rover.models.Rover;
+import com.rover.models.Position;
+import com.rover.models.Rover;
 
 public class MoveCommand implements Command {
 

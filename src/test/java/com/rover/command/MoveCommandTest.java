@@ -1,9 +1,9 @@
-package com.test.rover.command;
+package com.rover.command;
 
-import com.test.rover.models.Direction;
-import com.test.rover.models.Plateau;
-import com.test.rover.models.Position;
-import com.test.rover.models.Rover;
+import com.rover.models.Direction;
+import com.rover.models.Plateau;
+import com.rover.models.Position;
+import com.rover.models.Rover;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
