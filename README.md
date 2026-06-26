@@ -178,73 +178,6 @@ mvn test -Dtest=MoveCommandTest
 mvn test -Dtest=CommandRegistryTest
 ```
 
-### Couverture de code
-
-```bash
-mvn jacoco:report
-```
-
-Tous les tests incluent une couverture de code à **100%**.
-
-## 🛠️ Dépendances
-
-- **Lombok** : Réduction du code boilerplate
-- **SLF4J + Logback** : Framework de logging
-- **JUnit 5** : Framework de test
-- **Mockito** : Mock d'objets pour les tests
-
-## 📦 Dépendances Maven
-
-```xml
-<!-- Lombok pour les annotations -->
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.44</version>
-</dependency>
-
-<!-- Logging -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>2.0.17</version>
-</dependency>
-
-<!-- Tests -->
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter</artifactId>
-    <version>5.12.2</version>
-    <scope>test</scope>
-</dependency>
-```
-
-## 💡 Utilisation Avancée
-
-### Créer une mission personnalisée
-
-```java
-Plateau plateau = new Plateau(5, 5);
-Rover rover = new Rover(new Position(1, 2), Direction.N, plateau);
-RoverInstruction instruction = new RoverInstruction(rover, "LMLMLMLMM");
-RoverMission mission = new RoverMission(List.of(instruction));
-
-CommandRegistry registry = new CommandRegistry();
-RoverMissionService service = new RoverMissionService(registry);
-service.execute(instruction);
-```
-
-### Ajouter une nouvelle commande
-
-1. Créer une classe implémentant `Command`
-2. Implémenter la méthode `execute(Rover rover)`
-3. Ajouter la commande au `CommandRegistry`
-
-## ⚙️ Configuration
-
-- **Version Java** : 21+
-- **Encoding** : UTF-8
-- **Plateforme** : Cross-platform (Linux, macOS, Windows)
 
 ## ❌ Gestion des Erreurs
 
@@ -257,22 +190,4 @@ Le projet gère les erreurs suivantes :
 | `Invalid rover configuration` | Format du fichier incorrect | Exception levée |
 | `Empty input file` | Fichier vide | Exception levée |
 
-## 📄 Licence
-
-Ce projet est fourni à titre d'exemple éducatif.
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! N'hésitez pas à :
-- Signaler des bugs
-- Proposer des améliorations
-- Soumettre des pull requests
-
-## 📞 Support
-
-Pour toute question ou problème, veuillez ouvrir une issue sur GitHub.
-
 ---
-
-**Dernière mise à jour** : 26 Juin 2026
-
