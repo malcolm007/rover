@@ -143,24 +143,26 @@ Rover position: 5 1 E
 
 ```
 com.rover/
-├── command/          # Système de commandes
-│   ├── Command       # Interface
-│   ├── LeftCommand   # Rotation à gauche
-│   ├── RightCommand  # Rotation à droite
-│   ├── MoveCommand   # Déplacement
-│   └── CommandRegistry # Registre des commandes
-├── models/          # Modèles de données
-│   ├── Direction    # Enum des directions
-│   ├── Position     # Record de position
-│   ├── Plateau      # Définition du plateau
-│   ├── Rover        # État du rover
-│   ├── RoverInstruction # Instructions pour un rover
-│   └── RoverMission # Mission complète
-├── parser/          # Parsing des fichiers
-│   └── FileParser   # Lecteur d'entrée
-├── services/        # Logique métier
+├── command/                # Système de commandes
+│   ├── Command             # Interface
+│   ├── LeftCommand         # Rotation à gauche
+│   ├── RightCommand        # Rotation à droite
+│   ├── MoveCommand         # Déplacement
+│   └── CommandRegistry     # Registre des commandes
+├── models/                 # Modèles de données
+│   ├── Direction           # Enum des directions
+│   ├── Position            # Record de position
+│   ├── Plateau             # Définition du plateau
+│   ├── Rover               # État du rover
+│   └── RoverMission        # Mission complète
+│   └── RoverMissionBuilder # Constructeur de mission
+│   └── RoverMissionImpl    # Implémentation de la missionBuilder
+├── parser/                 # Parsing des fichiers
+│   └── FileParser          # Implémentation du parser de fichiers
+│   └── Parser              # Interface du parser
+├── services/               # Logique métier
 │   └── RoverMissionService # Exécution des missions
-└── Main            # Point d'entrée
+└── Main                    # Point d'entrée
 ```
 
 ## 🧪 Tests
