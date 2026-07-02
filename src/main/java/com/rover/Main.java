@@ -1,26 +1,23 @@
 package com.rover;
 
-import com.rover.command.CommandRegistry;
-import com.rover.models.RoverInstruction;
 import com.rover.models.RoverMission;
+import com.rover.models.RoverMissionImpl;
 import com.rover.parser.FileParser;
-import com.rover.services.RoverMissionService;
+import com.rover.parser.Parser;
 import lombok.extern.slf4j.Slf4j;
-
-import java.nio.file.Path;
 
 @Slf4j
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        FileParser parser = new FileParser();
-        RoverMission mission = parser.parse(Path.of(args[0]));
 
-        CommandRegistry registry = new CommandRegistry();
-        RoverMissionService service = new RoverMissionService(registry);
-        for (RoverInstruction instruction : mission.roverInstructions()) {
-            service.execute(instruction);
-            log.info("Rover position: {}", instruction.rover());
-        }
+        Parser parser = new FileParser();
+        RoverMission roverMission = new RoverMissionImpl()
+                .build(parser.parse(args[0]));
+        //On récupère chaque rover et on fait move() ou execute()
+        //reoverMission.execute() renvoi un resultat qui contient l'historique de move
+        // On affiche la dernière position
+        // Pour info, voici tous le trajet du rover
+        roverMission.move();
     }
 }

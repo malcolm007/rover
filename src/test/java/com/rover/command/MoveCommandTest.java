@@ -2,8 +2,10 @@ package com.rover.command;
 
 import com.rover.models.Direction;
 import com.rover.models.Plateau;
+import com.rover.models.Plateau.PlateauBuilder;
 import com.rover.models.Position;
 import com.rover.models.Rover;
+import com.rover.models.Rover.RoverBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -67,9 +69,14 @@ class MoveCommandTest {
     @Test
     void should_update_rover_position_when_execute_with_valid_position() {
         // GIVEN
-        Position initialPosition = new Position(1, 2);
-        Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(initialPosition, Direction.N, plateau);
+        Plateau plateau = new PlateauBuilder().maxX(5).maxY(5).build();
+        Rover rover = new RoverBuilder()
+                .id("1")
+                .position(1, 2)
+                .direction("N")
+                .plateau(plateau)
+                .instructions("LLL")
+                .build();
 
         // WHEN
         command.execute(rover);
@@ -81,9 +88,14 @@ class MoveCommandTest {
     @Test
     void should_throw_exception_when_execute_with_out_of_plateau_position() {
         // GIVEN
-        Position initialPosition = new Position(5, 5);
-        Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(initialPosition, Direction.N, plateau);
+        Plateau plateau = new PlateauBuilder().maxX(5).maxY(5).build();
+        Rover rover = new RoverBuilder()
+                .id("1")
+                .position(5, 5)
+                .direction("N")
+                .plateau(plateau)
+                .instructions("LLL")
+                .build();
 
         // WHEN & THEN
         assertThrows(IllegalStateException.class, () -> command.execute(rover));
@@ -92,9 +104,14 @@ class MoveCommandTest {
     @Test
     void should_throw_exception_with_correct_message_when_out_of_plateau() {
         // GIVEN
-        Position initialPosition = new Position(5, 5);
-        Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(initialPosition, Direction.N, plateau);
+        Plateau plateau = new PlateauBuilder().maxX(5).maxY(5).build();
+        Rover rover = new RoverBuilder()
+                .id("1")
+                .position(5, 5)
+                .direction("N")
+                .plateau(plateau)
+                .instructions("LLL")
+                .build();
 
         // WHEN & THEN
         IllegalStateException exception = assertThrows(
@@ -107,9 +124,14 @@ class MoveCommandTest {
     @Test
     void should_handle_move_at_plateau_boundary() {
         // GIVEN
-        Position initialPosition = new Position(0, 0);
-        Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(initialPosition, Direction.S, plateau);
+        Plateau plateau = new PlateauBuilder().maxX(5).maxY(5).build();
+        Rover rover = new RoverBuilder()
+                .id("1")
+                .position(0, 0)
+                .direction("S")
+                .plateau(plateau)
+                .instructions("LLL")
+                .build();
 
         // WHEN & THEN
         assertThrows(IllegalStateException.class, () -> command.execute(rover));
@@ -118,17 +140,28 @@ class MoveCommandTest {
     @Test
     void should_handle_move_at_plateau_west_boundary() {
         // GIVEN
-        Position initialPosition = new Position(0, 2);
-        Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(initialPosition, Direction.W, plateau);
+        Plateau plateau = new PlateauBuilder().maxX(5).maxY(5).build();
+        Rover rover = new RoverBuilder()
+                .id("1")
+                .position(0, 2)
+                .direction("W")
+                .plateau(plateau)
+                .instructions("LLL")
+                .build();
 
         // WHEN & THEN
         assertThrows(IllegalStateException.class, () -> command.execute(rover));
     }
 
     private Rover createRover(Position position, Direction direction) {
-        Plateau plateau = new Plateau(10, 10);
-        return new Rover(position, direction, plateau);
+        Plateau plateau = new PlateauBuilder().maxX(10).maxY(10).build();
+        return new RoverBuilder()
+                .id("1")
+                .position(position.x(), position.y())
+                .direction(direction.name())
+                .plateau(plateau)
+                .instructions("LLL")
+                .build();
     }
 }
 
